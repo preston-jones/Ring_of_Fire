@@ -106,6 +106,10 @@ body {
     // background: linear-gradient(180deg, #f5af19, #f12711); /* Red-Linear */
     // background: linear-gradient(0deg, #6f1616, #c31432); /* Red-Linear-Light */
     background-image: url(../src/assets/img/background-cards.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat';
 }
 
 .flex-c {
