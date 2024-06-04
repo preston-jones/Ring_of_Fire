@@ -102,22 +102,13 @@
 }
 
 body {
-    background-color: #FFDD65;
+    background: linear-gradient(180deg, #78fdff, #6dd5fa, #2980b9); /* Blue-Linear */
+    // background: linear-gradient(180deg, #f5af19, #f12711); /* Red-Linear */
+    // background: linear-gradient(0deg, #6f1616, #c31432); /* Red-Linear-Light */
+    background-image: url(../src/assets/img/background-cards.png);
 }
 
-.btn {
-    cursor: pointer;
-    border: none;
-    padding: 16px 48px;
-}
-
-.btn-typ {
-    font-family: 'Montserrat';
-    font-size: 20px;
-    color: #212529;
-}
-
-.fc {
+.flex-c {
     display: flex;
     justify-content: center;
     align-items: center;

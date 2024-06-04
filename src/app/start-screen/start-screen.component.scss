@@ -6,10 +6,33 @@
     height: 100vh;
     width: 100vw;
     max-width: 100%;
+
     >img {
+        max-width: 920px;
         width: 100%;
         object-fit: contain;
-        filter: drop-shadow(2px 5px 15px #000000);
+        filter: drop-shadow(2px 5px 20px #000000ad);
         margin-bottom: 64px;
+        padding: 16px;
     }
+}
+
+.st-btn {
+    border: none;
+    padding: 16px 48px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        background-color: #eeeeee;
+    }
+}
+
+.st-btn-typ {
+    font-family: 'Montserrat';
+    font-size: 20px;
+    font-weight: 600;
+    color: #212529;
 }
