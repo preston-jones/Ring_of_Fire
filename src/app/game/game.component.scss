@@ -9,7 +9,7 @@ h1 {
     flex-direction: column;
 }
 
-.game-header{
+.game-header {
     position: absolute;
     top: 0;
     background-color: aqua;
@@ -21,23 +21,42 @@ h1 {
     position: relative;
     width: 300px;
     margin-top: 200px;
+
     >img {
         position: absolute;
         height: 240px;
+        transition: all 125ms ease-in-out;
     }
 }
 
 .first-card-of-stack {
-    right: 82px;
+    cursor: pointer;
+    transition: all 125ms ease-in-out;
+
     &:hover {
-        cursor: pointer;
         transform: scale(1.1) translateY(-10px);
-        transition: transform 125ms ease-in-out;
     }
 }
 
 .take-card {
+    animation: take-card-animation 1s ease-in-out;
+    transform: scale(1.3) translateX(170px) translateY(-180px) rotate(-10deg);
+}
 
-    transition: all 125ms ease-in-out;
-    transform: translateX(18px) scale(1.5) !important; /*cause :hover is stronger by default */
+@keyframes take-card-animation {
+    0% {
+        transform: scale(1.1) rotateY(90deg);
+    }
+
+    40% {
+        transform: scale(1.7);
+    }
+
+    60% {
+        transform: scale(1.7);
+    }
+
+    100% {
+        transform: scale(1.3) translateX(170px) translateY(-180px) rotate(-10deg) rotateY(0deg);
+    }
 }

@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
+  flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
 
   takeCard() {
