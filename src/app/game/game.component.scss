@@ -31,7 +31,13 @@ h1 {
     right: 82px;
     &:hover {
         cursor: pointer;
-        transform: translateY(-183px);
-        transition: transform .2s, -webkit-transform .2s ease-in-out;
+        transform: scale(1.1) translateY(-10px);
+        transition: transform 125ms ease-in-out;
     }
+}
+
+.take-card {
+
+    transition: all 125ms ease-in-out;
+    transform: translateX(18px) scale(1.5) !important; /*cause :hover is stronger by default */
 }
