@@ -9,15 +9,13 @@ import { Router } from '@angular/router';
   styleUrl: './start-screen.component.scss'
 })
 export class StartScreenComponent {
-
-  playerName: string = 'Preston';
+  
 
   constructor(private router: Router) { }
 
 
   newGame() {
     console.log('Starting a new game');
-    console.log('Player: ' + this.playerName);
     this.router.navigateByUrl("/game");
   }
 }

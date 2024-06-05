@@ -1,8 +1,12 @@
+h1 {
+    text-align: center;
+}
+
 .game-container {
   flex-direction: column;
   height: 100vh;
 }
 
-h1 {
-    text-align: center;
+.card-deck {
+    height: 120px;
 }
