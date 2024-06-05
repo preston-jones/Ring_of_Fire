@@ -1,5 +1,11 @@
 <div class="game-container flex-c">
-    <div class="card-stack">
-        <img href="assets/img/card-cover.png" alt="Card-Cover" class="card-cover">
+    <div class="game-header flex-c">
+        <h1>Ring Of Fire</h1>
+    </div>
+    <div class="card-stack flex-c">
+        @for (card of [0,1,2,3]; track card; let i = $index;) {
+            <img [ngStyle]="{'right.px': 50 + i*8, 'transform': 'rotate(3deg)'}" src="assets/img/card-cover.png" alt="Card-Cover">
+        }
+        <img class="first-card-of-stack" src="assets/img/card-cover.png" alt="">
     </div>
 </div>
