@@ -3,10 +3,18 @@
         <h1>Ring Of Fire</h1>
     </div>
     <div class="card-stack flex-c">
+        <!-- Card stack -->
         @for (card of [0,1,2,3]; track card; let i = $index;) {
             <img [ngStyle]="{'right.px': 50 + i*8, 'transform': 'rotate(3deg)'}" src="assets/img/card-cover.png" alt="Card-Cover">
         }
         <img (click)="takeCard()" class="first-card-of-stack" style="right:82px" src="assets/img/card-cover.png" alt="">
-        <img (click)="takeCard()" *ngIf="takeCardAnimation" class="take-card" style="right:82px" src="assets/img/cards/4_of_spades.png" alt="">
+
+        <!-- Stack for played Cards -->
+        @for (card of game.playedCards; track card; let i = $index;) {
+            <img src="assets/img/cards/{{ card }}.png" class="played-card" alt="">
+        }
+
+        <!-- Current Card (Animation) -->
+        <img (click)="takeCard()" *ngIf="takeCardAnimation" class="take-card" src="assets/img/cards/{{ currentCard }}.png" alt="">
     </div>
 </div>
