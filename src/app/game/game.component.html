@@ -1,6 +1,6 @@
-<app-player  style="top: 130px;" class="player-position"></app-player>
-<app-player  style="top: 230px;" class="player-position"></app-player>
-<app-player  style="top: 330px;" class="player-position"></app-player>
+@for (player of game.players; track player; let i = $index;) {
+    <app-player [ngStyle]="{'top.px': 100 + (i*100)}" [name]="player" class="player-position"></app-player>
+}
 <app-info-box style="bottom: 100px;" class="info-box-position"></app-info-box>
 <div class="game-container flex-c">
     <div class="card-stack flex-c">
@@ -19,3 +19,7 @@
         <img (click)="takeCard()" *ngIf="takeCardAnimation" class="take-card" src="assets/img/cards/{{ currentCard }}.png" alt="">
     </div>
 </div>
+
+<button mat-fab color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
