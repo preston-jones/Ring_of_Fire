@@ -1,13 +1,13 @@
 <app-player  style="top: 130px;" class="player-position"></app-player>
-<app-player  style="top: 250px;" class="player-position"></app-player>
-<app-player  style="top: 370px;" class="player-position"></app-player>
+<app-player  style="top: 230px;" class="player-position"></app-player>
+<app-player  style="top: 330px;" class="player-position"></app-player>
 <div class="game-container flex-c">
     <div class="card-stack flex-c">
         <!-- Card stack -->
         @for (card of [0,1,2,3]; track card; let i = $index;) {
             <img [ngStyle]="{'right.px': i*5, 'transform': 'rotate(3deg)'}" src="assets/img/card-cover.png" alt="Card-Cover">
         }
-        <img (click)="takeCard()" class="first-card-of-stack" style="right:25px" src="assets/img/card-cover.png" alt="">
+        <img (click)="takeCard()" class="first-card-of-stack" src="assets/img/card-cover.png" alt="">
 
         <!-- Stack for played Cards -->
         @for (card of game.playedCards; track card; let i = $index;) {

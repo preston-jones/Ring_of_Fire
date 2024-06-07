@@ -22,6 +22,7 @@ h1 {
 .first-card-of-stack {
     cursor: pointer;
     transition: all 125ms ease-in-out;
+    right:25px;
 
     &:hover {
         transform: scale(1.1) translateY(-10px);
@@ -30,13 +31,13 @@ h1 {
 
 .take-card {
     animation: take-card-animation 1s ease-in-out;
-    transform: scale(1.3) translateX(130px) translateY(-180px) rotate(-10deg);
-    // right:25px;
+    transform: scale(1.1) translateX(190px) translateY(-180px) rotate(-10deg);
+    right:25px;
 }
 
 .played-card {
-    transform: scale(1.3) translateX(130px) translateY(-180px) rotate(-10deg);
-    // right:25px;
+    transform: scale(1.1) translateX(190px) translateY(-180px) rotate(-10deg);
+    right:25px;
 }
 
 @keyframes take-card-animation {
@@ -53,7 +54,7 @@ h1 {
     }
 
     100% {
-        transform: scale(1.3) translateX(130px) translateY(-180px) rotate(-10deg) rotateY(0deg);
+        transform: scale(1.1) translateX(190px) translateY(-180px) rotate(-10deg) rotateY(0deg);
     }
 }
 
