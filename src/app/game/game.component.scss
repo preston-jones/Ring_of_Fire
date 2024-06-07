@@ -11,6 +11,7 @@ h1 {
 .card-stack {
     position: relative;
     margin-top: 500px;
+    right: -136px; /* needs to be edited cleaner/better */
 
     >img {
         position: absolute;
@@ -60,5 +61,10 @@ h1 {
 
 .player-position {
     position: absolute;
-    right: 0;
+    left: 0;
+}
+
+.info-box-position {
+    position: absolute;
+    left: 0;
 }
