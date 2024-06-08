@@ -12,6 +12,7 @@ h1 {
     position: relative;
     margin-top: 500px;
     right: -136px; /* needs to be edited cleaner/better */
+    bottom: 64px;
 
     >img {
         position: absolute;
@@ -67,4 +68,13 @@ h1 {
 .info-box-position {
     position: absolute;
     left: 0;
+    bottom: 0;
+    margin-bottom: 16px;
+}
+
+.btn-add-player {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 16px;
 }

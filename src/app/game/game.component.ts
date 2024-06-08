@@ -34,7 +34,7 @@ import { MatDialog} from '@angular/material/dialog';
 })
 export class GameComponent {
   game!: Game;
-  currentCard: any;;
+  currentCard: any;
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
 
