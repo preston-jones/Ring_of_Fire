@@ -4,6 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 16px;
     border-radius: 0 16px 16px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     background: rgba(255,255,255,0.5);
@@ -11,5 +13,32 @@
 
     >span {
         font-size: 24px;
+    }
+}
+
+.current-card-container {
+    height: 132px;
+    width: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.current-card-img {
+    height: 100px;
+    object-fit: contain;
+}
+
+.btn-card-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
     }
 }

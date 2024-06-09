@@ -1,3 +1,11 @@
 <div class="info-box">
-    <span>{{ currentCard }}</span>
+  <span>Picked Card: </span>
+  <div class="current-card-container">
+    @if (currentCard) {
+    <img class="current-card-img" src="assets/img/cards/{{ currentCard }}.png" alt="">
+    <button mat-fab color="primary" (click)="openCardInfo()" class="btn-card-info">
+      <mat-icon>question_mark</mat-icon>
+    </button>
+    }
+  </div>
 </div>

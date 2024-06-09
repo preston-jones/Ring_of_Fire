@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { InfoBoxComponent } from '../info-box/info-box.component';
-import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 
 /* -- Imports for Material Dialog and Button -- */
+import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +35,7 @@ import { MatDialog} from '@angular/material/dialog';
 export class GameComponent {
   game!: Game;
   currentCard: any;
+  // currentCard: string = ''; /* => ERROR: TS2322: Type 'string | undefined' is not assignable to type 'string'. Type 'undefined' is not assignable to type 'string'. */
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
 
@@ -52,13 +53,11 @@ export class GameComponent {
   takeCard() {
     if (!this.takeCardAnimation && this.game.cardStack.length > 0) {
       this.currentCard = this.game.cardStack.pop();
-      console.log(this.currentCard);
       this.takeCardAnimation = true;
 
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.takeCardAnimation = false;
-        console.log(this.game.cardStack.length);
       }, 1500);
     }
     else if (this.game.cardStack.length === 0){
