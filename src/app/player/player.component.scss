@@ -20,3 +20,20 @@
         border-radius: 100%
     }
 }
+
+.player-active {
+    background: rgba(255, 170, 39, 0.8);
+    backdrop-filter: blur(10px);
+    
+    >span {
+        font-size: 24px;
+        margin-right: 16px;
+    }
+
+    >img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 100%
+    }
+}
