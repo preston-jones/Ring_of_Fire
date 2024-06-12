@@ -9,6 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class DialogCardInfoComponent {
 
+
+  // constructor() {
+  //   console.log(this.card)
+  // }
+
+
   cardAction = [
     { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
     { title: 'You', description: 'You decide who drinks' },
@@ -25,9 +31,8 @@ export class DialogCardInfoComponent {
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 
-  // @Input() card: string;
 
-  title : string = '';
-  description : string = '';
+  title: string = '';
+  description: string = '';
 
 }

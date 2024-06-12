@@ -30,7 +30,7 @@ import { DialogCardInfoComponent } from '../dialog-card-info/dialog-card-info.co
 })
 export class InfoBoxComponent {
 
-  constructor(public matDialog: MatDialog) {}
+  constructor(public matDialog: MatDialog) { }
 
   @Input() currentCard: string = '';
 
@@ -40,6 +40,7 @@ export class InfoBoxComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(this.currentCard);
       console.log('The dialog was closed');
     });
   }
