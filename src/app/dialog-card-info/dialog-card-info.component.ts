@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { GamedataService } from '../gamedata.service';
 
 @Component({
   selector: 'app-dialog-card-info',
@@ -9,10 +10,10 @@ import { Component, Input } from '@angular/core';
 })
 export class DialogCardInfoComponent {
 
-
-  // constructor() {
-  //   console.log(this.card)
-  // }
+  gameData = inject(GamedataService);
+  currentCard = this.gameData.currentCardGlobal.split('_');
+  currentCardType = this.currentCard[0];
+  currentCardNumber = +this.currentCard[1];
 
 
   cardAction = [
@@ -24,15 +25,16 @@ export class DialogCardInfoComponent {
     { title: 'Chicks', description: 'All girls drink.' },
     { title: 'Heaven', description: 'Put your hands up! The last player drinks!' },
     { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and the other way around.' },
-    { title: 'Thumbmaster', description: '' },
+    { title: 'Thumbmaster', description: 'Touch the tabletop with your thumb. The last player to touch the table has to take a sip.' },
     { title: 'Men', description: 'All men drink.' },
-    { title: 'Quizmaster', description: '' },
-    { title: 'Never have i ever...', description: 'Say something you nnever did. Everyone who did it has to drink.' },
+    { title: 'Quizmaster', description: 'When a Queen is drawn, the person who drew the card must ask a question. The person who answers the question must drink.' },
+    { title: 'Never have i ever...', description: 'Say something you never did. Everyone who did it has to drink.' },
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 
 
-  title: string = '';
-  description: string = '';
+  title = this.cardAction[this.currentCardNumber - 1].title;
+  description: string = this.cardAction[this.currentCardNumber - 1].description;
+  this.gameData.currentCardTitelGlobal = this.title;
 
 }

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { InfoBoxComponent } from '../info-box/info-box.component';
+import { GamedataService } from '../gamedata.service';
 
 /* -- Imports for Material Dialog and Button -- */
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -35,6 +36,7 @@ import { MatDialog} from '@angular/material/dialog';
 export class GameComponent {
   game!: Game;
   currentCard: any;
+  gameData = inject(GamedataService);
   // currentCard: string = ''; /* => ERROR: TS2322: Type 'string | undefined' is not assignable to type 'string'. Type 'undefined' is not assignable to type 'string'. */
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
@@ -53,7 +55,10 @@ export class GameComponent {
   takeCard() {
     if (!this.takeCardAnimation && this.game.cardStack.length > 0) {
       this.currentCard = this.game.cardStack.pop();
+      this.gameData.currentCardGlobal = this.currentCard;
       this.takeCardAnimation = true;
+      this.gameData.currentPlayerGlobal++;
+      this.gameData.currentPlayerGlobal = this.gameData.currentPlayerGlobal % this.game.players.length;
 
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
@@ -71,7 +76,9 @@ export class GameComponent {
     });
 
     dialogRef.afterClosed().subscribe(name => {
-      this.game.players.push(name);
+      if (name && name.length > 0) {
+        this.game.players.push(name);
+      }
     });
   }
 }

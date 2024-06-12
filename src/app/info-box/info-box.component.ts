@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { GamedataService } from '../gamedata.service';
 
 /* -- Imports for Material Dialog and Button -- */
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -30,9 +31,9 @@ import { DialogCardInfoComponent } from '../dialog-card-info/dialog-card-info.co
 })
 export class InfoBoxComponent {
 
-  constructor(public matDialog: MatDialog) { }
+  gameData = inject(GamedataService);
 
-  @Input() currentCard: string = '';
+  constructor(public matDialog: MatDialog) { }
 
 
   openCardInfo(): void {
@@ -40,8 +41,6 @@ export class InfoBoxComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.currentCard);
-      console.log('The dialog was closed');
     });
   }
 
