@@ -10,7 +10,7 @@ import { GamedataService } from '../gamedata.service';
 })
 export class DialogCardInfoComponent {
 
-  gameData = inject(GamedataService);
+  gameData: GamedataService = inject(GamedataService);
   currentCard = this.gameData.currentCardGlobal.split('_');
   currentCardType = this.currentCard[0];
   currentCardNumber = +this.currentCard[1];
@@ -35,6 +35,8 @@ export class DialogCardInfoComponent {
 
   title = this.cardAction[this.currentCardNumber - 1].title;
   description: string = this.cardAction[this.currentCardNumber - 1].description;
-  this.gameData.currentCardTitelGlobal = this.title;
 
+  constructor() {
+    this.gameData.currentCardTitelGlobal = this.title;
+  }
 }
