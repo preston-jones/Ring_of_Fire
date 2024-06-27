@@ -4,6 +4,10 @@ import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { InfoBoxComponent } from '../info-box/info-box.component';
 import { GamedataService } from '../gamedata.service';
+import { GameInterface } from '../interfaces/game.interface';
+
+/* -- Imports for Firestore -- */
+import { Firestore, collectionData, collection, addDoc } from '@angular/fire/firestore';
 
 /* -- Imports for Material Dialog and Button -- */
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -41,7 +45,7 @@ export class GameComponent {
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
 
-  constructor(public matDialog: MatDialog) {} /* Why must declare it in the constructor? */
+  constructor(public firestore: Firestore, public matDialog: MatDialog) {} /* Why must declare it in the constructor? */
 
   ngOnInit(): void {
     this.newGame();
@@ -49,8 +53,33 @@ export class GameComponent {
 
   newGame() {
     this.game = new Game();
+    this.addNote(this.game, "games");
     console.log(this.game);
   }
+
+  async addNote(item: Game, colId: "games") {
+    await addDoc(this.getNotesRef(), this.getCleanJson(item)).catch(
+      (err) => { console.error(err) }
+    ).then(
+      (docRef) => console.log("Document written with ID: ", docRef?.id)
+    )
+  }
+
+
+  getNotesRef() {
+    return collection(this.firestore, 'games');
+  }
+
+
+  getCleanJson(item: GameInterface) {
+    return {
+      players: this.game.players,
+      cardStack: this.game.cardStack,
+      playedCards: this.game.playedCards,
+      currentPlayer: this.gameData.currentPlayerGlobal,
+    }
+  }
+
 
   takeCard() {
     if (!this.takeCardAnimation && this.game.cardStack.length > 0) {
