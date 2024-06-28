@@ -47,13 +47,20 @@ export class GameComponent {
   // currentCard: string = ''; /* => ERROR: TS2322: Type 'string | undefined' is not assignable to type 'string'. Type 'undefined' is not assignable to type 'string'. */
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
+  unsubGame: any;
 
   constructor(private route: ActivatedRoute, public firestore: Firestore, public matDialog: MatDialog) { } /* Why must declare it in the constructor? */
+
 
   ngOnInit(): void {
     this.newGame();
     this.getCurrentGame();
 
+  }
+
+
+  ngOnDestroy() {
+    this.unsubGame();
   }
 
 
@@ -66,8 +73,8 @@ export class GameComponent {
     this.route.params.subscribe(async (params) => {
       this.gameId = params['id'];
       const currentGameRef = this.getGameRef();
-      const unsub = onSnapshot(currentGameRef, (gameData) => {
 
+      this.unsubGame = onSnapshot(currentGameRef, (gameData) => {
         if (gameData.exists()) {
           let game = gameData.data();
           this.game.cardStack = game['cardStack'];
