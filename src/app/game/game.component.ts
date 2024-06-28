@@ -8,7 +8,7 @@ import { GameInterface } from '../interfaces/game.interface';
 import { ActivatedRoute } from '@angular/router';
 
 /* -- Imports for Firestore -- */
-import { Firestore, collectionData, collection, addDoc, doc, onSnapshot, getDoc, updateDoc  } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, doc, onSnapshot, getDoc, updateDoc } from '@angular/fire/firestore';
 
 /* -- Imports for Material Dialog and Button -- */
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -48,7 +48,7 @@ export class GameComponent {
   flipCardAnimation: Boolean = false;
   takeCardAnimation: Boolean = false;
 
-  constructor(private route: ActivatedRoute, public firestore: Firestore, public matDialog: MatDialog) {} /* Why must declare it in the constructor? */
+  constructor(private route: ActivatedRoute, public firestore: Firestore, public matDialog: MatDialog) { } /* Why must declare it in the constructor? */
 
   ngOnInit(): void {
     this.newGame();
@@ -62,19 +62,20 @@ export class GameComponent {
   }
 
 
-  getCurrentGame() { 
+  getCurrentGame() {
     this.route.params.subscribe(async (params) => {
       this.gameId = params['id'];
       const currentGameRef = this.getGameRef();
-      const gameData = await getDoc(currentGameRef);
-      
-      if (gameData.exists()) {
-        let game = gameData.data();
-        this.game.cardStack = game['cardStack'];
-        this.game.players = game['players'];
-        this.game.playedCards = game['playedCards'];
-        this.gameData.currentPlayerGlobal = game['currentPlayer'];
-      }
+      const unsub = onSnapshot(currentGameRef, (gameData) => {
+
+        if (gameData.exists()) {
+          let game = gameData.data();
+          this.game.cardStack = game['cardStack'];
+          this.game.players = game['players'];
+          this.game.playedCards = game['playedCards'];
+          this.gameData.currentPlayerGlobal = game['currentPlayer'];
+        }
+      });
     });
   }
 
@@ -122,7 +123,7 @@ export class GameComponent {
         this.updateGame();
       }, 1500);
     }
-    else if (this.game.cardStack.length === 0){
+    else if (this.game.cardStack.length === 0) {
       alert('No more cards');
     }
   }
