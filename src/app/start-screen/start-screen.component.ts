@@ -23,6 +23,9 @@ export class StartScreenComponent {
       cardStack: game.cardStack,
       playedCards: game.playedCards,
       currentPlayer: 0,
+      currentCard: game.currentCard,
+      flipCardAnimation: game.flipCardAnimation,
+      takeCardAnimation: game.takeCardAnimation
     }
     let gameRef = collection(this.firestore, "games");
     await addDoc(gameRef, game).catch(

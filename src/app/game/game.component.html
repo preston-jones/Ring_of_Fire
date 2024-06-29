@@ -1,5 +1,5 @@
 @for (player of game.players; track player; let i = $index;) {
-    <app-player [ngStyle]="{'top.px': 72 + (i*90)}" [name]="player" class="player-position" [playerActive]="i == gameData.currentPlayerGlobal"></app-player>
+    <app-player [ngStyle]="{'top.px': 72 + (i*90)}" [name]="player" class="player-position" [playerActive]="i == game.currentPlayer"></app-player>
 }
 <app-info-box class="info-box-position"></app-info-box>
 <div class="game-container flex-c">
@@ -16,7 +16,7 @@
         }
 
         <!-- Current Card (Animation) -->
-        <img (click)="takeCard()" *ngIf="takeCardAnimation" class="take-card" src="assets/img/cards/{{ currentCard }}.png" alt="">
+        <img (click)="takeCard()" *ngIf="game.takeCardAnimation" class="take-card" src="assets/img/cards/{{ game.currentCard }}.png" alt="">
     </div>
     <button mat-fab color="primary" (click)="openDialog()" class="btn-add-player">
         <mat-icon>add</mat-icon>

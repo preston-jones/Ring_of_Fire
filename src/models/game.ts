@@ -3,6 +3,9 @@ export class Game {
     public cardStack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
+    public currentCard: any;
+    public flipCardAnimation: Boolean = false;
+    public takeCardAnimation: Boolean = false;
 
     constructor() {
         for (let i = 1; i < 14; i++) {
