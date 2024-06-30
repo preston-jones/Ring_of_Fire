@@ -10,32 +10,32 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     background: rgba(255,255,255,0.5);
     backdrop-filter: blur(10px);
-
-    >span {
-        font-size: 24px;
-    }
 }
 
 .current-card-container {
-    height: 132px;
-    width: 100px;
+    height: 100%;
+    width: 100%x;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    > span {
+        font-size: 24px;
+    }
 }
 
 .current-card-img {
-    height: 100px;
+    height: 70%;
+    max-height: 140px;
     object-fit: contain;
 }
 
 .btn-card-info {
     position: absolute;
-    top: 0;
-    right: 0;
-    height: 32px;
-    width: 32px;
+    top: 10px;
+    right: -24px;
+    height: 48px;
+    width: 48px;
     display: flex;
     &:hover {
         cursor: pointer;

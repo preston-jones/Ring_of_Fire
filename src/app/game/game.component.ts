@@ -52,7 +52,7 @@ export class GameComponent {
   ngOnInit(): void {
     this.newGame();
     this.getCurrentGame();
-
+    this.openDialog()
   }
 
 
@@ -75,6 +75,7 @@ export class GameComponent {
         if (gameData.exists()) {
           let game = gameData.data();
           this.gameDataService.currentCard = game['currentCard'];
+          this.gameDataService.players = game['players'];
           this.game.cardStack = game['cardStack'];
           this.game.players = game['players'];
           this.game.playedCards = game['playedCards'];

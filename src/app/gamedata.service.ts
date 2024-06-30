@@ -10,4 +10,5 @@ export class GamedataService {
   currentCard: string = '';
   currentPlayerGlobal: number = 0;
   currentCardTitelGlobal: string = '';
+  players: string[] = [];
 }
