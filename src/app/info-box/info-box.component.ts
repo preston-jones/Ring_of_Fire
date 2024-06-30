@@ -43,5 +43,4 @@ export class InfoBoxComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
 }
