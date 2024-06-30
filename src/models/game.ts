@@ -3,7 +3,7 @@ export class Game {
     public cardStack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
-    public currentCard: any;
+    public currentCard: any = [];
     public flipCardAnimation: Boolean = false;
     public takeCardAnimation: Boolean = false;
 

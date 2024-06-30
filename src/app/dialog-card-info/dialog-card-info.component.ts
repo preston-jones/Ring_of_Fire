@@ -11,7 +11,7 @@ import { GamedataService } from '../gamedata.service';
 export class DialogCardInfoComponent {
 
   gameData: GamedataService = inject(GamedataService);
-  currentCard = this.gameData.currentCardGlobal.split('_');
+  currentCard = this.gameData.currentCard.split('_');
   currentCardType = this.currentCard[0];
   currentCardNumber = +this.currentCard[1];
 

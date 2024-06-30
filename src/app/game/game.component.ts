@@ -34,20 +34,20 @@ import { MatDialog } from '@angular/material/dialog';
     DialogAddPlayerComponent,
     FormsModule,
     MatFormField,
-    MatLabel
+    MatLabel,
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
-  game!: Game;
-  gameData = inject(GamedataService);
+  public game!: Game;
   gameId: string = '';
   // currentCard: string = ''; /* => ERROR: TS2322: Type 'string | undefined' is not assignable to type 'string'. Type 'undefined' is not assignable to type 'string'. */
   unsubGame: any;
 
   constructor(private route: ActivatedRoute, public firestore: Firestore, public matDialog: MatDialog) { } /* Why must declare it in the constructor? */
 
+  gameDataService: GamedataService = inject(GamedataService);
 
   ngOnInit(): void {
     this.newGame();
@@ -73,9 +73,8 @@ export class GameComponent {
 
       this.unsubGame = onSnapshot(currentGameRef, (gameData) => {
         if (gameData.exists()) {
-          console.log(this.game);
-          
           let game = gameData.data();
+          this.gameDataService.currentCard = game['currentCard'];
           this.game.cardStack = game['cardStack'];
           this.game.players = game['players'];
           this.game.playedCards = game['playedCards'];
@@ -123,15 +122,14 @@ export class GameComponent {
   takeCard() {
     if (!this.game.takeCardAnimation && this.game.cardStack.length > 0) {
       this.game.currentCard = this.game.cardStack.pop();
-      this.game.currentPlayer = this.game.currentCard;
       this.game.takeCardAnimation = true;
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
 
       this.updateGame();
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
         this.game.takeCardAnimation = false;
+        this.game.currentPlayer++;
+        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
         this.updateGame();
       }, 1500);
     }

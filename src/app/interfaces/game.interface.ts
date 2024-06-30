@@ -3,7 +3,7 @@ export interface GameInterface {
     cardStack: string[];
     playedCards: string[];
     currentPlayer: number;
-    currentCard: any;
+    currentCard: string[];
     flipCardAnimation: Boolean;
     takeCardAnimation: Boolean;
 }

@@ -22,7 +22,7 @@ export class StartScreenComponent {
       players: game.players,
       cardStack: game.cardStack,
       playedCards: game.playedCards,
-      currentPlayer: 0,
+      currentPlayer: game.currentPlayer,
       currentCard: game.currentCard,
       flipCardAnimation: game.flipCardAnimation,
       takeCardAnimation: game.takeCardAnimation

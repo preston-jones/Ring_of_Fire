@@ -7,7 +7,7 @@ export class GamedataService {
 
   constructor() { }
 
-  currentCardGlobal: string = '';
+  currentCard: string = '';
   currentPlayerGlobal: number = 0;
   currentCardTitelGlobal: string = '';
 }
